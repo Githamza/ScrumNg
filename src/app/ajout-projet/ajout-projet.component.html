@@ -1,0 +1,70 @@
+<mat-horizontal-stepper [linear]="isLinear">
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Informations projet</ng-template>
+            <mat-form-field>
+                <input matInput placeholder="Lead du projet" formControlName="leadProj" required>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Nom du projet" formControlName="nomProj" required>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="Description du projet" formControlName="descProj" required></textarea>
+            </mat-form-field>
+            <mat-form-field>
+                <textarea matInput placeholder="A quel besoin répond le produit ?" formControlName="besProj" required></textarea>
+            </mat-form-field>
+            <div>{{firstFormGroup.value | json}}</div>
+            <div>
+                <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Constituez votre équipe</ng-template>
+            <div formArrayName="pers" *ngFor="let control of secondFormGroup.controls.pers.controls; let i= index">
+                <mat-form-field>
+                    <input matInput placeholder="Nom collaborateur #{{i+1}}" [formControl]="control.controls.name" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Poste" [formControl]="control.controls.poste" required>
+                </mat-form-field>
+                <button *ngIf="secondFormGroup.controls.pers.controls.length > 1" (click)="deleteItem()" mat-mini-fab color="warn" class="rightButton"><mat-icon >remove</mat-icon>
+	  			</button>
+            </div>
+
+            <button (click)="addItem()" mat-mini-fab color="primary" class="rightButton"><mat-icon >add</mat-icon>
+      		  </button>
+
+
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+ <form [formGroup]="thirdFormGroup">
+            <ng-template matStepLabel>Constituez votre équipe</ng-template>
+            <div formArrayName="backlog" *ngFor="let control of thirdFormGroup.controls.backlog.controls; let i= index">
+                <mat-form-field>
+                    <input matInput placeholder="Nom collaborateur #{{i+1}}" [formControl]="control.controls.fonctionnalite" required>
+                </mat-form-field>
+              
+                <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteItem()" mat-mini-fab color="warn" class="rightButton"><mat-icon >remove</mat-icon>
+	  			</button>
+            </div>
+
+            <button (click)="addItem()" mat-mini-fab color="primary" class="rightButton"><mat-icon >add</mat-icon>
+      		  </button>
+
+
+        </form>
+ 
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
