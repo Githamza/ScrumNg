@@ -47,14 +47,22 @@ isLinear = false;
 
 
 }
-  deleteItem(index: number) {
+  deleteItem(index: number ) {
         const control = <FormArray>this.secondFormGroup.controls['pers'];
         control.removeAt(index);
     }
 
+  deleteFonc(index: number ) {
+        const control = <FormArray>this.thirdFormGroup.controls['backlog'];
+        control.removeAt(index);
+    }
 	addItem(): void {
         const control = < FormArray > this.secondFormGroup.controls['pers'];
   		control.push(this.createItem());
 }
 
+	addFonc(): void {
+        const control = < FormArray > this.thirdFormGroup.controls['backlog'];
+  		control.push(this.createFonct());
+}
 }

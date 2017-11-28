@@ -50,14 +50,14 @@
             <ng-template matStepLabel>Constituez votre équipe</ng-template>
             <div formArrayName="backlog" *ngFor="let control of thirdFormGroup.controls.backlog.controls; let i= index">
                 <mat-form-field>
-                    <input matInput placeholder="Nom collaborateur #{{i+1}}" [formControl]="control.controls.fonctionnalite" required>
+                    <input matInput placeholder="Fonctionnalité #{{i+1}}" [formControl]="control.controls.fonctionnalite" required>
                 </mat-form-field>
               
-                <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteItem()" mat-mini-fab color="warn" class="rightButton"><mat-icon >remove</mat-icon>
+                <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteFonc()" mat-mini-fab color="warn" class="rightButton"><mat-icon >remove</mat-icon>
 	  			</button>
             </div>
 
-            <button (click)="addItem()" mat-mini-fab color="primary" class="rightButton"><mat-icon >add</mat-icon>
+            <button (click)="addFonc()" mat-mini-fab color="primary" class="rightButton"><mat-icon >add</mat-icon>
       		  </button>
 
 
