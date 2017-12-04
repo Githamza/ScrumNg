@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 
 import {MatButtonModule} from '@angular/material/button';
 
@@ -17,7 +18,6 @@ import {MatTableModule} from '@angular/material/table';
 
 
 import { AjoutProjetComponent } from './ajout-projet/ajout-projet.component';
-import { FonctionnaliteComponent } from './fonctionnalite/fonctionnalite.component';
 import { ListeProjetsComponent } from './liste-projets/liste-projets.component';
 
 const appRoutes: Routes = [
@@ -30,12 +30,11 @@ const appRoutes: Routes = [
     AppComponent,
     NavabarComponent,
     AjoutProjetComponent,
-    FonctionnaliteComponent,
     ListeProjetsComponent,
 
   ],
   imports: [
-    BrowserModule,BrowserAnimationsModule,MatToolbarModule,MatStepperModule,MatInputModule,ReactiveFormsModule,MatMenuModule,MatButtonModule,MatIconModule,MatTableModule,  RouterModule.forRoot(
+    BrowserModule,BrowserAnimationsModule,MatToolbarModule,MatStepperModule,MatInputModule,ReactiveFormsModule,MatMenuModule,MatButtonModule,MatIconModule,MatTableModule,HttpClientModule,  RouterModule.forRoot(
       appRoutes
     )
   ],
