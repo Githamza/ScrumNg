@@ -13,7 +13,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
-import {MatTableDataSource} from '@angular/material';
+import {MatTableModule} from '@angular/material/table';
 
 
 import { AjoutProjetComponent } from './ajout-projet/ajout-projet.component';
@@ -21,7 +21,8 @@ import { FonctionnaliteComponent } from './fonctionnalite/fonctionnalite.compone
 import { ListeProjetsComponent } from './liste-projets/liste-projets.component';
 
 const appRoutes: Routes = [
-  { path: 'ProjetsList', component: ListeProjetsComponent }
+  { path: 'ProjetsList', component: ListeProjetsComponent },
+  { path: 'nouveauproj', component: AjoutProjetComponent }
 ];
 
 @NgModule({
@@ -31,10 +32,10 @@ const appRoutes: Routes = [
     AjoutProjetComponent,
     FonctionnaliteComponent,
     ListeProjetsComponent,
-    
+
   ],
   imports: [
-    BrowserModule,BrowserAnimationsModule,MatToolbarModule,MatStepperModule,MatInputModule,ReactiveFormsModule,MatMenuModule,MatButtonModule,MatIconModule,MatTableDataSource,  RouterModule.forRoot(
+    BrowserModule,BrowserAnimationsModule,MatToolbarModule,MatStepperModule,MatInputModule,ReactiveFormsModule,MatMenuModule,MatButtonModule,MatIconModule,MatTableModule,  RouterModule.forRoot(
       appRoutes
     )
   ],

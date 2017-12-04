@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
- 
+
 @Component({
   selector: 'app-liste-projets',
   templateUrl: './liste-projets.component.html',
@@ -12,9 +12,16 @@ export class ListeProjetsComponent implements OnInit {
 
   ngOnInit() {
   }
-  
 displayedColumns = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
+dataSource = new MatTableDataSource(ELEMENT_DATA);
+
+applyFilter(filterValue: string) {
+filterValue = filterValue.trim(); // Remove whitespace
+filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+this.dataSource.filter = filterValue;
+}
+
+
 }
 
 export interface Element {
@@ -23,7 +30,6 @@ export interface Element {
   weight: number;
   symbol: string;
 }
-
 const ELEMENT_DATA: Element[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
@@ -46,6 +52,3 @@ const ELEMENT_DATA: Element[] = [
   {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
   {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
 ];
-
-
-}
