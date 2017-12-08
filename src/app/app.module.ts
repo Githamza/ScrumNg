@@ -5,6 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import {MatButtonModule} from '@angular/material/button';
 
@@ -15,10 +16,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import { AjoutprojService } from './ajoutproj.service'
+import {MatCardModule} from '@angular/material/card';
 
 
 import { AjoutProjetComponent } from './ajout-projet/ajout-projet.component';
 import { ListeProjetsComponent } from './liste-projets/liste-projets.component';
+import { ProjetscardsComponent } from './projetscards/projetscards.component';
 
 const appRoutes: Routes = [
   { path: 'ProjetsList', component: ListeProjetsComponent },
@@ -31,14 +35,28 @@ const appRoutes: Routes = [
     NavabarComponent,
     AjoutProjetComponent,
     ListeProjetsComponent,
+    ProjetscardsComponent,
 
   ],
   imports: [
-    BrowserModule,BrowserAnimationsModule,MatToolbarModule,MatStepperModule,MatInputModule,ReactiveFormsModule,MatMenuModule,MatButtonModule,MatIconModule,MatTableModule,HttpClientModule,  RouterModule.forRoot(
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatStepperModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    HttpClientModule,
+    HttpModule,  
+    MatCardModule,
+    RouterModule.forRoot(
       appRoutes
     )
   ],
-  providers: [],
+  providers: [AjoutprojService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

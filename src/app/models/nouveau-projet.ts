@@ -4,7 +4,7 @@
         descProj: String;
         besProj: Number;
         pers: [Personnes];
-        Fonct: [Fonctionnalite]
+        Backlog: [Fonctionnalite]
     }
 
     export interface Personnes {
