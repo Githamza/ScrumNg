@@ -1,31 +1,41 @@
-  <div class="example-container mat-elevation-z8">
-      <div class="example-header">
-        <mat-form-field>
-          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
-      </div>
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
 
-      <mat-table #table [dataSource]="dataSource">
+  <mat-table #table [dataSource]="dataSource">
 
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-          <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.nomProj }}  </mat-cell>
-        </ng-container>
+    <ng-container matColumnDef="Nom projet">
+      <mat-header-cell *matHeaderCellDef> Nom projet </mat-header-cell>
+      <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.nomProj }} </mat-cell>
+    </ng-container>
 
+    <ng-container matColumnDef="Lead Projet">
+      <mat-header-cell *matHeaderCellDef> Lead Projet </mat-header-cell>
+      <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.leadProj }} </mat-cell>
+    </ng-container>
 
-
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
-    </div>
-
-    <div *ngIf ="nouveauProjet" >
-
-    </div>
-
+    <ng-container matColumnDef="effectif">
+      <mat-header-cell *matHeaderCellDef> effectif </mat-header-cell>
+      <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.pers.length }} </mat-cell>
+    </ng-container>
 
 
-    <!--
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<div *ngIf="nouveauProjet">
+
+</div>
+
+
+
+<!--
     <div class="divv" [@goals]='stateExression'>
       <mat-card class="example-card">
         <mat-card-header>

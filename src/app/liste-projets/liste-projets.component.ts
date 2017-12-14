@@ -1,14 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import {MatTableDataSource} from '@angular/material';
-import { AjoutprojService} from '../ajoutproj.service';
-import { NouveauProjet } from '../models/nouveau-projet';
-import { trigger,state, style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { Component, OnInit } from "@angular/core";
+import { MatTableDataSource } from "@angular/material";
+import { AjoutprojService } from "../ajoutproj.service";
+import { NouveauProjet } from "../models/nouveau-projet";
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate,
+  keyframes,
+  query,
+  stagger
+} from "@angular/animations";
 
 @Component({
-  selector: 'app-liste-projets',
-  templateUrl: './liste-projets.component.html',
-  styleUrls: ['./liste-projets.component.css'],
-   /*animations: [
+  selector: "app-liste-projets",
+  templateUrl: "./liste-projets.component.html",
+  styleUrls: ["./liste-projets.component.css"]
+  /*animations: [
 
       trigger('goals', [
         state('inactive', style({
@@ -22,42 +31,33 @@ import { trigger,state, style,transition,animate,keyframes,query,stagger } from 
       ])
     ]*/
 })
-    export class ListeProjetsComponent implements OnInit {
+export class ListeProjetsComponent implements OnInit {
+  constructor(private ajoutProj: AjoutprojService) {}
+  nouveauProjet: NouveauProjet[];
+  stateExression: string = "inactive";
 
-      constructor(private ajoutProj: AjoutprojService) { }
-      nouveauProjet: NouveauProjet[];
-      stateExression : string='inactive';
+  ngOnInit() {
+    this.getAllProj();
+  }
+  displayedColumns = ["Nom projet", "Lead Projet", "effectif"];
+  dataSource = new MatTableDataSource<NouveauProjet>(this.nouveauProjet);
 
-     
-      ngOnInit(){
-     this.getAllProj();
-      }
-      displayedColumns = ['name'];
-      dataSource = new MatTableDataSource<NouveauProjet>(this.nouveauProjet);
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 
-      applyFilter(filterValue: string) {
-        filterValue = filterValue.trim(); // Remove whitespace
-        filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-        this.dataSource.filter = filterValue;
-      }
-
-      getAllProj() {
-        this.ajoutProj.getAllProj().subscribe(
-          response => {
-          this.dataSource = new MatTableDataSource<NouveauProjet>(response);
-          },
-          error => console.log(error)
-        );
-      }
-      anim() {
-        if(this.stateExression === 'inactive')
-        this.stateExression ='expended';
-        else 
-        this.stateExression = 'inactive';
-      }
-    }
-
-
-
-
-   
+  getAllProj() {
+    this.ajoutProj.getAllProj().subscribe(
+      response => {
+        this.dataSource = new MatTableDataSource<NouveauProjet>(response);
+      },
+      error => console.log(error)
+    );
+  }
+  /*anim() {
+    if (this.stateExression === "inactive") this.stateExression = "expended";
+    else this.stateExression = "inactive";
+  }*/
+}
