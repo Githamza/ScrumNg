@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./navabar.component.css"]
 })
 export class NavabarComponent implements OnInit {
-           constructor() {}
+  constructor() {}
 
   ngOnInit() {}
 }

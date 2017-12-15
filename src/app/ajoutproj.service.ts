@@ -8,32 +8,32 @@ import "rxjs/add/operator/catch";
 @Injectable()
 export class AjoutprojService {
   apiURL = "http://127.0.0.1:8080/api/proj/projets";
-  nouveauProjet: NouveauProjet = {
-    leadProj: "David",
-    nomProj: "ProjAgile",
-    descProj: "projetcoool",
-    besProj: 123,
-    pers: [{ name: "Hamza", poste: "Dev" }, { name: "Clement", poste: "mito" }],
-    Backlog: [
-      { fonctionnalite: "login", userStory: "l'utilisateur se connecte" }
-    ]
-  };
+  /*nouveauProjet: NouveauProjet = {
+        leadProj: "David",
+        nomProj: "ProjAgile",
+        descProj: "projetcoool",
+        besProj: 123,
+        pers: [{ name: "Hamza", poste: "Dev" }, { name: "Clement", poste: "mito" }],
+        Backlog: 
+          { fonctionnalite: ["login"], userStory: ["l'utilisateur se connecte"] }
+        
+      };*/
 
   constructor(private http: HttpClient) {}
 
   getAllProj(): Observable<NouveauProjet[]> {
     return this.http.get<NouveauProjet[]>(
-      "http://127.0.0.1:8080/api/proj/projets"
+      "http://127.0.0.1:8081/api/proj/projets"
     );
   }
   addProj(nouveauProjet: NouveauProjet): Observable<any> {
-    return this.http.post("http://127.0.0.1:8080/api/proj/projets", {
+    return this.http.post<NouveauProjet[]>(
+      "http://127.0.0.1:8081/api/proj/projets",
       nouveauProjet
-    });
+    );
   }
-  }
-  /*  private handleError ( response: HttpResponse): Observable<any> {
+}
+/*  private handleError ( response: HttpResponse): Observable<any> {
      let errorMessage= `${response.status} - ${response.statusText}`;
      return Observable.throw(errorMessage);
    }*/
-}

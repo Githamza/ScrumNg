@@ -52,7 +52,7 @@
             <ng-template matStepLabel>Constituez votre équipe</ng-template>
             <div formArrayName="backlog" *ngFor="let control of thirdFormGroup.controls.backlog.controls; let i= index">
                 <mat-form-field>
-                    <input matInput placeholder="Fonctionnalité #{{i+1}}" [formControl]="control.controls.fonctionnalite" required>
+                    <input matInput placeholder="Fonctionnalité #{{i+1}}" formControlName="fonctionnalite" required>
                 </mat-form-field>
 
                 <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteFonc()" mat-mini-fab color="warn" class="rightButton">
@@ -63,14 +63,28 @@
             <button (click)="addFonc()" mat-mini-fab color="primary" class="rightButton">
                 <mat-icon>add</mat-icon>
             </button>
+            <div formArrayName="backlog" *ngFor="let control of thirdFormGroup.controls.backlog.controls; let i= index">
+                <mat-form-field>
+                    <input matInput placeholder="userStory #{{i+1}}" [formControl]="control.controls.userStory" required>
+                </mat-form-field>
+
+                <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteFonc()" mat-mini-fab color="warn" class="rightButton">
+                    <mat-icon>remove</mat-icon>
+                </button>
+            </div>
+
+            <button (click)="createUserStory()" mat-mini-fab color="primary" class="rightButton">
+                <mat-icon>add</mat-icon>
+            </button>
 
 
         </form>
 
         <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary">Done</button>
+            <button mat-raised-button color="primary" (click)="addProjet()">Done</button>
 
         </div>
     </mat-step>
 </mat-horizontal-stepper>
+{{nouveauProjet | json}}
