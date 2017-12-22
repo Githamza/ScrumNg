@@ -32,13 +32,9 @@ export class AjoutProjetComponent implements OnInit {
     });
 
     this.thirdFormGroup = this._formBuilder.group({
-      backlog: this._formBuilder.array([this.createFonct()])
+      Fonctionnalite: this._formBuilder.array([this.createFonct()]),
+      UserStory: this._formBuilder.array([this.createUserStory()])
     });
-    this.thirdFormGroup = this._formBuilder.group({
-      backlog: this._formBuilder.array([this.createUserStory()])
-    });
-
-    console.log(this.thirdFormGroup);
   }
 
   createItem(): FormGroup {
@@ -64,15 +60,11 @@ export class AjoutProjetComponent implements OnInit {
   }
 
   deleteFonc(index: number) {
-    const control = <FormArray>this.thirdFormGroup.controls.controls[
-      "fonctionnalite"
-    ];
+    const control = <FormArray>this.thirdFormGroup.controls["Fonctionnalite"];
     control.removeAt(index);
   }
   deleteUserStory(index: number) {
-    const control = <FormArray>this.thirdFormGroup.controls.controls[
-      "userStory"
-    ];
+    const control = <FormArray>this.thirdFormGroup.controls["UserStory"];
     control.removeAt(index);
   }
   addItem(): void {
@@ -81,16 +73,12 @@ export class AjoutProjetComponent implements OnInit {
   }
 
   addFonc(): void {
-    const control = <FormArray>this.thirdFormGroup.controls.controls[
-      "fonctionnalite"
-    ];
+    const control = <FormArray>this.thirdFormGroup.controls["Fonctionnalite"];
     control.push(this.createFonct());
   }
   addUserStory(): void {
-    const control = <FormArray>this.thirdFormGroup.controls.controls[
-      "userStory"
-    ];
-    control.push(this.createFonct());
+    const control = <FormArray>this.thirdFormGroup.controls["UserStory"];
+    control.push(this.createUserStory());
   }
 
   addProjet() {

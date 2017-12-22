@@ -48,38 +48,48 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Définissez les fonctionnalités</ng-template>
-        <form [formGroup]="thirdFormGroup">
-            <ng-template matStepLabel>Constituez votre équipe</ng-template>
-            <div formArrayName="backlog" *ngFor="let control of thirdFormGroup.controls.backlog.controls; let i= index">
-                <mat-form-field>
-                    <input matInput placeholder="Fonctionnalité #{{i+1}}" formControlName="fonctionnalite" required>
-                </mat-form-field>
-
-                <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteFonc()" mat-mini-fab color="warn" class="rightButton">
-                    <mat-icon>remove</mat-icon>
-                </button>
-            </div>
-
-            <button (click)="addFonc()" mat-mini-fab color="primary" class="rightButton">
-                <mat-icon>add</mat-icon>
-            </button>
-            <div formArrayName="backlog" *ngFor="let control of thirdFormGroup.controls.backlog.controls; let i= index">
-                <mat-form-field>
-                    <input matInput placeholder="userStory #{{i+1}}" [formControl]="control.controls.userStory" required>
-                </mat-form-field>
-
-                <button *ngIf="thirdFormGroup.controls.backlog.controls.length > 1" (click)="deleteFonc()" mat-mini-fab color="warn" class="rightButton">
-                    <mat-icon>remove</mat-icon>
-                </button>
-            </div>
-
-            <button (click)="createUserStory()" mat-mini-fab color="primary" class="rightButton">
-                <mat-icon>add</mat-icon>
-            </button>
+        <div fxlayout="row" fxLayout.xs="column" fxFlexFill>
+            <form fxFlex="50" [formGroup]="thirdFormGroup">
+                <ng-template matStepLabel>décrivez vos fonctionnalités</ng-template>
+                <div fxLayout="row" fxLayoutGap="20px">
+                    <div fxFlex="50">
 
 
-        </form>
+                        <div formArrayName="Fonctionnalite" *ngFor="let control of thirdFormGroup.controls.Fonctionnalite.controls; let i= index">
+                            <mat-form-field>
+                                <input matInput placeholder="Fonctionnalité #{{i+1}}" [formControl]="control.controls.fonctionnalite" required>
+                            </mat-form-field>
 
+                            <button *ngIf="thirdFormGroup.controls.Fonctionnalite.controls.length > 1" (click)="deleteFonc()" mat-mini-fab color="warn"
+                                class="rightButton">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                        </div>
+
+                        <button (click)="addFonc()" mat-mini-fab color="primary" class="rightButton">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <div fxFlex>
+
+                        <div formArrayName="UserStory" *ngFor="let control of thirdFormGroup.controls.UserStory.controls; let i= index">
+                            <mat-form-field>
+                                <input matInput placeholder="userStory #{{i+1}}" [formControl]="control.controls.userStory" required>
+                            </mat-form-field>
+
+                            <button *ngIf="thirdFormGroup.controls.UserStory.controls.length > 1" (click)="deleteUserStory()" mat-mini-fab color="warn"
+                                class="rightButton">
+                                <mat-icon>remove</mat-icon>
+                            </button>
+                        </div>
+
+                        <button (click)="addUserStory()" mat-mini-fab color="primary" class="rightButton">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" (click)="addProjet()">Done</button>

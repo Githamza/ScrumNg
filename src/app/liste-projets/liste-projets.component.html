@@ -9,7 +9,7 @@
 
     <ng-container matColumnDef="Nom projet">
       <mat-header-cell *matHeaderCellDef> Nom projet </mat-header-cell>
-      <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.nomProj }} </mat-cell>
+      <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.nomProj}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Lead Projet">
@@ -30,8 +30,7 @@
 </div>
 
 <div>
-  {{nouveauProjet | json}}
-</div>
+  {{dataSource.value }}</div>
 
 
 

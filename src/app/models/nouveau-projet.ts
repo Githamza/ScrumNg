@@ -12,6 +12,6 @@ export interface Personnes {
   poste: String;
 }
 export interface Fonctionnalite {
-  fonctionnalite: String;
-  userStory: String;
+  fonctionnalite: String[];
+  userStory: String[];
 }

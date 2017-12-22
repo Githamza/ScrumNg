@@ -25,14 +25,10 @@ router
     nouvProj.leadProj = req.body.leadProj;
     nouvProj.descProj = req.body.descProj;
     nouvProj.BesProj = req.body.BesProj;
-    nouvProj.pers = [{ name: req.body.name, poste: req.body.poste }];
-    nouvProj.backlog = [
-      {
-        fonctionnalite: [req.body.fonctionnalite],
-        userStory: req.body.userStory
-      }
-    ];
-    console.log(nouvProj);
+    nouvProj.pers = req.body.pers;
+    nouvProj.backlog.fonctionnalite = req.body.Fonctionnalite;
+    nouvProj.backlog.userStory = req.body.UserStory;
+    console.log(req.body);
     /*
     nouvProj.nomProj = "req.body.nomProj";
     nouvProj.leadProj = "req.body.leadProj";

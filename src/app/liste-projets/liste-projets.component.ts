@@ -1,38 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
 import { MatTableDataSource } from "@angular/material";
 import { AjoutprojService } from "../ajoutproj.service";
 import { NouveauProjet } from "../models/nouveau-projet";
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-  keyframes,
-  query,
-  stagger
-} from "@angular/animations";
-
+import { AsyncPipe } from "@angular/common";
 @Component({
   selector: "app-liste-projets",
   templateUrl: "./liste-projets.component.html",
   styleUrls: ["./liste-projets.component.css"]
-  /*animations: [
-
-      trigger('goals', [
-        state('inactive', style({
-          height: '300px'
-      })),
-        state('expended', style({
-          height: '0px'
-      })),
-      transition ('inactive <=> expended',animate('200ms ease-out'))
-      
-      ])
-    ]*/
 })
 export class ListeProjetsComponent implements OnInit {
-  constructor(private ajoutProj: AjoutprojService) {}
+  constructor(
+    private ajoutProj: AjoutprojService,
+    private changeDetectorRefs: ChangeDetectorRef
+  ) {}
   nouveauProjet: NouveauProjet[];
   stateExression: string = "inactive";
 
@@ -55,9 +35,7 @@ export class ListeProjetsComponent implements OnInit {
       },
       error => console.log(error)
     );
+    console.log;
+    this.changeDetectorRefs.detectChanges();
   }
-  /*anim() {
-    if (this.stateExression === "inactive") this.stateExression = "expended";
-    else this.stateExression = "inactive";
-  }*/
 }
