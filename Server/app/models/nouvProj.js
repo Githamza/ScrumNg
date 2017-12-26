@@ -12,7 +12,7 @@ var ProjSchema = new Schema({
       poste: String
     }
   ],
-  backlog: [[{ fonctionnalite: String }], [{ userStory: String }]]
+  backlog: { fonctionnalite: [String], userStory: [String] }
 });
 
 module.exports = mongoose.model("Projet", ProjSchema);

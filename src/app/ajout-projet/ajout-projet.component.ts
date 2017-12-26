@@ -87,12 +87,12 @@ export class AjoutProjetComponent implements OnInit {
       ...this.secondFormGroup.value,
       ...this.thirdFormGroup.value
     };
-    console.log(this.nouveauProjet);
     this.ajoutProj
       .addProj(this.nouveauProjet)
       .toPromise()
       .then(res => {
         console.log(res.message);
+        console.log(this.nouveauProjet);
       });
   }
 }

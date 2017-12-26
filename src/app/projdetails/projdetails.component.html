@@ -1,1 +1,30 @@
-<mat-card>{{this.Projet}}</mat-card>
+<mat-card>
+    <mat-list role="list">
+        <mat-list-item role="listitem">Nom du projet : {{this.Projet?.nomProj}}</mat-list-item>
+        <mat-list-item role="listitem">Leader du projet : {{this.Projet?.leadProj}}</mat-list-item>
+        <mat-list-item role="listitem">Description du projet : {{this.Projet?.descProj}}</mat-list-item>
+    </mat-list>
+
+</mat-card>
+
+<mat-card>
+    <mat-list role="list" *ngFor="let per of Projet?.pers">
+        <mat-list-item role="listitem">Nom : {{per.name}}</mat-list-item>
+        <mat-list-item role="listitem">poste : {{per.poste}}</mat-list-item>
+    </mat-list>
+
+</mat-card>
+<mat-card>
+    <mat-list role="list" *ngFor="let func of Projet?.backlog; let i=index">
+        <mat-list-item role="listitem">Fonctionnalité #i : {{func.fonctionnalite}}</mat-list-item>
+    </mat-list>
+
+</mat-card>
+<mat-card>
+    <mat-list role="list" *ngFor="let userS of Projet?.backlog">
+        <mat-list-item role="listitem">User Story #i : {{userS.userStory}} </mat-list-item>
+    </mat-list>
+
+</mat-card>
+
+{{this.Projet |json }}

@@ -28,7 +28,9 @@ router
     nouvProj.pers = req.body.pers;
     nouvProj.backlog.fonctionnalite = req.body.Fonctionnalite;
     nouvProj.backlog.userStory = req.body.UserStory;
-    console.log(req.body);
+    console.log(req.body.Fonctionnalite);
+    console.log(req.body.UserStory);
+
     /*
     nouvProj.nomProj = "req.body.nomProj";
     nouvProj.leadProj = "req.body.leadProj";
@@ -53,7 +55,6 @@ router
   .get(function(req, res) {
     NouvProj.find(function(err, nouvProjs) {
       if (err) res.send(err);
-
       res.json(nouvProjs);
       console.log(nouvProjs);
     });
@@ -68,8 +69,9 @@ router
       if (err) {
         res.send(err);
       } else {
-        res.json(nouvProj);
         console.log(nouvProj);
+
+        res.json(nouvProj);
       }
     });
   })

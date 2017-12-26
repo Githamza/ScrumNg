@@ -17,19 +17,19 @@ import { MatInputModule } from "@angular/material/input";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTableModule } from "@angular/material/table";
+import { MatListModule } from "@angular/material/list";
 import { AjoutprojService } from "./ajoutproj.service";
 import { MatCardModule } from "@angular/material/card";
 
 import { AjoutProjetComponent } from "./ajout-projet/ajout-projet.component";
 import { ListeProjetsComponent } from "./liste-projets/liste-projets.component";
 import { ProjetscardsComponent } from "./projetscards/projetscards.component";
-import { ProjdetailsComponent } from './projdetails/projdetails.component';
+import { ProjdetailsComponent } from "./projdetails/projdetails.component";
 
 const appRoutes: Routes = [
-  { path: "ProjetsList", component: ListeProjetsComponent,pathMatch: 'full'},
-  { path: "nouveauproj", component: AjoutProjetComponent,pathMatch: 'full' },
-  { path: "projdetail/:id", component: ProjdetailsComponent,pathMatch: 'full'}
-  
+  { path: "ProjetsList", component: ListeProjetsComponent, pathMatch: "full" },
+  { path: "nouveauproj", component: AjoutProjetComponent, pathMatch: "full" },
+  { path: "projdetail/:id", component: ProjdetailsComponent, pathMatch: "full" }
 ];
 
 @NgModule({
@@ -56,6 +56,7 @@ const appRoutes: Routes = [
     HttpModule,
     MatCardModule,
     FlexLayoutModule,
+    MatListModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [AjoutprojService],
