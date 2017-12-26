@@ -63,9 +63,14 @@ router
 
   // get the nouvProj with that id (accessed at GET http://localhost:8080/api/nouvProjs/:nouvProj_id)
   .get(function(req, res) {
+    console.log(req.params.nouvProj_id);
     NouvProj.findById(req.params.nouvProj_id, function(err, nouvProj) {
-      if (err) res.send(err);
-      res.json(nouvProj);
+      if (err) {
+        res.send(err);
+      } else {
+        res.json(nouvProj);
+        console.log(nouvProj);
+      }
     });
   })
   .put(function(req, res) {

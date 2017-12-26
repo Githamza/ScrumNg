@@ -1,8 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material";
 import { AjoutprojService } from "../ajoutproj.service";
 import { NouveauProjet } from "../models/nouveau-projet";
 import { AsyncPipe } from "@angular/common";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/merge';
+
 @Component({
   selector: "app-liste-projets",
   templateUrl: "./liste-projets.component.html",
@@ -10,15 +13,16 @@ import { AsyncPipe } from "@angular/common";
 })
 export class ListeProjetsComponent implements OnInit {
   constructor(
-    private ajoutProj: AjoutprojService,
-    private changeDetectorRefs: ChangeDetectorRef
-  ) {}
+    private ajoutProj: AjoutprojService  ) {}
   nouveauProjet: NouveauProjet[];
+  nouveauProjet2: NouveauProjet[];
+  
   stateExression: string = "inactive";
 
   ngOnInit() {
     this.getAllProj();
   }
+
   displayedColumns = ["Nom projet", "Lead Projet", "effectif"];
   dataSource = new MatTableDataSource<NouveauProjet>(this.nouveauProjet);
 
@@ -31,11 +35,13 @@ export class ListeProjetsComponent implements OnInit {
   getAllProj() {
     this.ajoutProj.getAllProj().subscribe(
       response => {
-        this.dataSource = new MatTableDataSource<NouveauProjet>(response);
+        console.log("hello"+response);
+        
+            this.dataSource = new MatTableDataSource<NouveauProjet>(response);
+            this.nouveauProjet2=response;
       },
       error => console.log(error)
     );
-    console.log;
-    this.changeDetectorRefs.detectChanges();
+
   }
 }

@@ -26,6 +26,10 @@ export class AjoutprojService {
       "http://127.0.0.1:8081/api/proj/projets"
     );
   }
+  getProj(id): Observable<NouveauProjet[]> {
+    return this.http.get<NouveauProjet[]>(
+      "http://127.0.0.1:8081/api/proj/nouvProjs/${id}");
+  }
   addProj(nouveauProjet: NouveauProjet): Observable<any> {
     return this.http.post<NouveauProjet[]>(
       "http://127.0.0.1:8081/api/proj/projets",

@@ -23,10 +23,13 @@ import { MatCardModule } from "@angular/material/card";
 import { AjoutProjetComponent } from "./ajout-projet/ajout-projet.component";
 import { ListeProjetsComponent } from "./liste-projets/liste-projets.component";
 import { ProjetscardsComponent } from "./projetscards/projetscards.component";
+import { ProjdetailsComponent } from './projdetails/projdetails.component';
 
 const appRoutes: Routes = [
-  { path: "ProjetsList", component: ListeProjetsComponent },
-  { path: "nouveauproj", component: AjoutProjetComponent }
+  { path: "ProjetsList", component: ListeProjetsComponent,pathMatch: 'full'},
+  { path: "nouveauproj", component: AjoutProjetComponent,pathMatch: 'full' },
+  { path: "projdetail/:id", component: ProjdetailsComponent,pathMatch: 'full'}
+  
 ];
 
 @NgModule({
@@ -35,7 +38,8 @@ const appRoutes: Routes = [
     NavabarComponent,
     AjoutProjetComponent,
     ListeProjetsComponent,
-    ProjetscardsComponent
+    ProjetscardsComponent,
+    ProjdetailsComponent
   ],
   imports: [
     BrowserModule,
