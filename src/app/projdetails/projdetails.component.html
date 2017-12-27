@@ -15,13 +15,13 @@
 
 </mat-card>
 <mat-card>
-    <mat-list role="list" *ngFor="let func of Projet?.backlog; let i=index">
+    <mat-list role="list" *ngFor="let func of Projet?.backlog.fonctionnalite; let i=index">
         <mat-list-item role="listitem">Fonctionnalité #i : {{func.fonctionnalite}}</mat-list-item>
     </mat-list>
 
 </mat-card>
 <mat-card>
-    <mat-list role="list" *ngFor="let userS of Projet?.backlog">
+    <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory">
         <mat-list-item role="listitem">User Story #i : {{userS.userStory}} </mat-list-item>
     </mat-list>
 
