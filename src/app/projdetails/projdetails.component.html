@@ -1,30 +1,38 @@
-<mat-card>
-    <mat-list role="list">
-        <mat-list-item role="listitem">Nom du projet : {{this.Projet?.nomProj}}</mat-list-item>
-        <mat-list-item role="listitem">Leader du projet : {{this.Projet?.leadProj}}</mat-list-item>
-        <mat-list-item role="listitem">Description du projet : {{this.Projet?.descProj}}</mat-list-item>
-    </mat-list>
+<div Fxlaout="row" fxLayoutGap="20px" class="container">
+    <div fxFlex=30>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Informations sur le projet</mat-card-title>
 
-</mat-card>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-list role="list">
+                    <mat-list-item role="listitem">Nom du projet : {{this.Projet?.nomProj}}</mat-list-item>
+                    <mat-list-item role="listitem">Leader du projet : {{this.Projet?.leadProj}}</mat-list-item>
+                    <mat-list-item role="listitem">Description du projet : {{this.Projet?.descProj}}</mat-list-item>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-list role="list" *ngFor="let per of Projet?.pers">
+                <mat-list-item role="listitem">Nom : {{per.name}}</mat-list-item>
+                <mat-list-item role="listitem">poste : {{per.poste}}</mat-list-item>
+            </mat-list>
 
-<mat-card>
-    <mat-list role="list" *ngFor="let per of Projet?.pers">
-        <mat-list-item role="listitem">Nom : {{per.name}}</mat-list-item>
-        <mat-list-item role="listitem">poste : {{per.poste}}</mat-list-item>
-    </mat-list>
+        </mat-card>
+    </div>
+    <div fxFlex>
+        <mat-card>
+            <mat-list role="list" *ngFor="let func of Projet?.backlog.fonctionnalite; let i=index">
+                <mat-list-item role="listitem">Fonctionnalité #{{i}} : {{func.fonctionnalite}}</mat-list-item>
+            </mat-list>
+        </mat-card>
+        <mat-card>
+            <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
+                <mat-list-item role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
+            </mat-list>
 
-</mat-card>
-<mat-card>
-    <mat-list role="list" *ngFor="let func of Projet?.backlog.fonctionnalite; let i=index">
-        <mat-list-item role="listitem">Fonctionnalité #i : {{func.fonctionnalite}}</mat-list-item>
-    </mat-list>
-
-</mat-card>
-<mat-card>
-    <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory">
-        <mat-list-item role="listitem">User Story #i : {{userS.userStory}} </mat-list-item>
-    </mat-list>
-
-</mat-card>
-
+        </mat-card>
+    </div>
+</div>
 {{this.Projet |json }}
