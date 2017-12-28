@@ -2,16 +2,31 @@ mat-card {
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0;
+  width: 100%;
 }
 mat-card-header {
   background-color: #116a94;
   color: white;
+  height: 50px;
+  width: 100%;
 }
 
 .container {
   background-color: #87b6bd;
+  width: 100%;
 }
 mat-card-title {
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
   width: 100%;
-  text-align: right;
+}
+.centertitle {
+  width: 100%;
+}
+div {
+  width: 100%;
+}
+#info {
+  width: 100%;
 }

@@ -57,10 +57,12 @@ router
   })
 
   .get(function(req, res) {
-    NouvProj.find(function(err, nouvProjs) {
+    NouvProj.find(function(err, nouvProj) {
       if (err) res.send(err);
-      res.json(nouvProjs);
-      console.log(nouvProjs);
+      else {
+        res.json(nouvProj);
+        console.log(nouvProj);
+      }
     });
   });
 router
@@ -87,12 +89,8 @@ router
       nouvProj.descProj = req.body.descProj;
       nouvProj.BesProj = req.body.BesProj;
       nouvProj.pers = [{ name: req.body.name, poste: req.body.poste }];
-      nouvProj.backlog = [
-        {
-          fonctionnalite: req.body.fonctionnalite,
-          userStory: req.body.userStory
-        }
-      ];
+      nouvProj.backlog.fonctionnalite = req.body.Fonctionnalite;
+      nouvProj.backlog.userStory = req.body.UserStory;
 
       nouvProj.save(function(err) {
         if (err) res.send(err);
