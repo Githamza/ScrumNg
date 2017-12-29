@@ -18,7 +18,9 @@ export class ProjdetailsComponent implements OnInit {
   ngOnInit() {
     this.getprojbyId();
   }
-
+  getEvent(e) {
+    console.log(e);
+  }
   getprojbyId() {
     let id = this.route.snapshot.paramMap.get("id");
     this.ajoutProj.getProj(id).subscribe(

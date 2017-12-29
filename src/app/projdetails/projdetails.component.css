@@ -4,7 +4,7 @@ mat-card {
   padding: 0;
   width: 100%;
 }
-mat-card-header {
+mat-card-header:not(.collab) {
   background-color: #116a94;
   color: white;
   height: 50px;
@@ -18,29 +18,34 @@ mat-card-header {
 /deep/ .mat-card-header-text {
   width: 100%;
 }
-mat-card-title {
+mat-card-title:not(.collab) {
   line-height: 50px;
   text-align: center;
   vertical-align: middle;
   width: 100%;
 }
-.centertitle {
+
+div:not(.example-header-image) {
   width: 100%;
 }
-div {
-  width: 100%;
-}
-#info {
-  width: 100%;
+.backlogList {
+  float: left;
 }
 mat-list {
   width: 100%;
 }
 
-mat-list-item {
-  width: 100%;
-}
-
 button {
   width: 100%;
+}
+mat-icon {
+  float: right;
+  line-height: 50px;
+  height: 50px;
+  vertical-align: middle;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
 }
