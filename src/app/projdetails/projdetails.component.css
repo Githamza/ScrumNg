@@ -15,6 +15,9 @@ mat-card-header {
   background-color: #87b6bd;
   width: 100%;
 }
+/deep/ .mat-card-header-text {
+  width: 100%;
+}
 mat-card-title {
   line-height: 50px;
   text-align: center;
@@ -28,5 +31,16 @@ div {
   width: 100%;
 }
 #info {
+  width: 100%;
+}
+mat-list {
+  width: 100%;
+}
+
+mat-list-item {
+  width: 100%;
+}
+
+button {
   width: 100%;
 }
