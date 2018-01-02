@@ -3,6 +3,7 @@
 var express = require("express"); // call express
 var NouvProj = require("../app/models/nouvProj");
 var mongoose = require("mongoose");
+var io = require("socket.io")(mongoose);
 
 var router = express.Router(); // get an instance of the express Router
 
@@ -32,7 +33,7 @@ router
     });*/
     nouvProj.backlog.fonctionnalite = req.body.Fonctionnalite;
     nouvProj.backlog.userStory = req.body.UserStory;
-    console.log(nouvProj.backlog);
+    //console.log(nouvProj.backlog);
     //console.log(req.body.UserStory);
 
     /*
@@ -57,11 +58,11 @@ router
   })
 
   .get(function(req, res) {
-    NouvProj.find(function(err, nouvProj) {
+    NouvProj.find(function(err, nouvProjs) {
       if (err) res.send(err);
       else {
-        res.json(nouvProj);
-        console.log(nouvProj);
+        res.json(nouvProjs);
+        //console.log(nouvProjs);
       }
     });
   });

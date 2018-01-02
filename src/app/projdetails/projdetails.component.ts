@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { NouveauProjet } from "../models/nouveau-projet";
 import { AjoutprojService } from "../ajoutproj.service";
 import { Response } from "@angular/http/src/static_response";
+import * as io from "socket.io-client";
 
 @Component({
   selector: "app-projdetails",
@@ -15,6 +16,7 @@ export class ProjdetailsComponent implements OnInit {
     private ajoutProj: AjoutprojService
   ) {}
   Projet: NouveauProjet[];
+  private socket;
   ngOnInit() {
     this.getprojbyId();
   }
@@ -22,6 +24,10 @@ export class ProjdetailsComponent implements OnInit {
     console.log(e);
   }
   getprojbyId() {
+    this.socket = io("http://localhost:8081");
+    this.socket.on("event", function(evt) {
+      console.log(evt);
+    });
     let id = this.route.snapshot.paramMap.get("id");
     this.ajoutProj.getProj(id).subscribe(
       response => {

@@ -9,15 +9,15 @@ import "rxjs/add/operator/catch";
 export class AjoutprojService {
   apiURL = "http://127.0.0.1:8080/api/proj/projets";
   /*nouveauProjet: NouveauProjet = {
-        leadProj: "David",
-        nomProj: "ProjAgile",
-        descProj: "projetcoool",
-        besProj: 123,
-        pers: [{ name: "Hamza", poste: "Dev" }, { name: "Clement", poste: "mito" }],
-        Backlog: 
-          { fonctionnalite: ["login"], userStory: ["l'utilisateur se connecte"] }
-        
-      };*/
+            leadProj: "David",
+            nomProj: "ProjAgile",
+            descProj: "projetcoool",
+            besProj: 123,
+            pers: [{ name: "Hamza", poste: "Dev" }, { name: "Clement", poste: "mito" }],
+            Backlog: 
+              { fonctionnalite: ["login"], userStory: ["l'utilisateur se connecte"] }
+            
+          };*/
 
   constructor(private http: HttpClient) {}
 
@@ -39,6 +39,6 @@ export class AjoutprojService {
   }
 }
 /*  private handleError ( response: HttpResponse): Observable<any> {
-     let errorMessage= `${response.status} - ${response.statusText}`;
-     return Observable.throw(errorMessage);
-   }*/
+        let errorMessage= `${response.status} - ${response.statusText}`;
+        return Observable.throw(errorMessage);
+      }*/

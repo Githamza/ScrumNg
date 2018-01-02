@@ -7,6 +7,7 @@
 var express = require("express"); // call express
 var app = express();
 var bodyParser = require("body-parser");
+var io = require("socket.io").listen(server);
 // define our app using express
 var routerProj = require("./routes/ajoutProj");
 
@@ -37,9 +38,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/api/proj", routerProj);
 
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "../src/index.html");
+});
+// Chargement de socket.io
+var io = require("socket.io").listen(server);
+
+// Quand un client se connecte, on le note dans la console
+io.sockets.on("connection", function(socket) {
+  console.log("Un client est connecté !");
+});
 var port = process.env.PORT || 8081; // set our port
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
+var server = app.listen(port);
 console.log("Magic happens on port " + port);
+console.log(__dirname);
