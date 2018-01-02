@@ -1,47 +1,42 @@
-import { Component, OnInit } from "@angular/core";
-import { MatTableDataSource } from "@angular/material";
-import { AjoutprojService } from "../ajoutproj.service";
-import { NouveauProjet } from "../models/nouveau-projet";
-import { AsyncPipe } from "@angular/common";
-import { Observable } from "rxjs/Observable";
-import 'rxjs/add/observable/merge';
+  import { Component, OnInit } from "@angular/core";
+  import { MatTableDataSource } from "@angular/material";
+  import { AjoutprojService } from "../ajoutproj.service";
+  import { NouveauProjet } from "../models/nouveau-projet";
+  import { Observable } from "rxjs/Observable";
+  import 'rxjs/add/observable/merge';
+  import { DataSource } from "@angular/cdk/collections";
 
-@Component({
-  selector: "app-liste-projets",
-  templateUrl: "./liste-projets.component.html",
-  styleUrls: ["./liste-projets.component.css"]
-})
-export class ListeProjetsComponent implements OnInit {
-  constructor(
-    private ajoutProj: AjoutprojService  ) {}
-  nouveauProjet: NouveauProjet[];
-  nouveauProjet2: NouveauProjet[];
+
+
+  @Component({
+    selector: "app-liste-projets",
+    templateUrl: "./liste-projets.component.html",
+    styleUrls: ["./liste-projets.component.css"]
+  })
+  export class ListeProjetsComponent implements OnInit {
+    constructor( private ajoutProj: AjoutprojService  ) {}
+    nouveauProjet: NouveauProjet[];
+    nouveauProjet2: NouveauProjet[];
+    
+    stateExression: string = "inactive";
+
+    ngOnInit() {}
+    
+    displayedColumns = ["Nom projet", "Lead Projet", "effectif"];
+    dataSource = new UserDataSource(this.ajoutProj);
+    applyFilter(filterValue: string) {
+      filterValue = filterValue.trim(); // Remove whitespace
+      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+      //this.dataSource.filter = filterValue;
+    }
   
-  stateExression: string = "inactive";
-
-  ngOnInit() {
-    this.getAllProj();
   }
-
-  displayedColumns = ["Nom projet", "Lead Projet", "effectif"];
-  dataSource = new MatTableDataSource<NouveauProjet>(this.nouveauProjet);
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
+  export class UserDataSource extends DataSource<any> {
+    constructor(private ajoutProj: AjoutprojService) {
+      super();
+    }
+    connect(): Observable<NouveauProjet[]> {
+      return this.ajoutProj.getAllProj();
+    }
+    disconnect() {}
   }
-
-  getAllProj() {
-    this.ajoutProj.getAllProj().subscribe(
-      response => {
-        console.log("hello"+response);
-        
-            this.dataSource = new MatTableDataSource<NouveauProjet>(response);
-            this.nouveauProjet2=response;
-      },
-      error => console.log(error)
-    );
-
-  }
-}

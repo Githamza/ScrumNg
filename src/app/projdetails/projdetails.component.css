@@ -5,14 +5,14 @@ mat-card {
   width: 100%;
 }
 mat-card-header:not(.collab) {
-  background-color: #116a94;
+  background-color: #673ab7;
   color: white;
   height: 50px;
   width: 100%;
 }
 
 .container {
-  background-color: #87b6bd;
+  background-color: #d6d6d6;
   width: 100%;
 }
 /deep/ .mat-card-header-text {
@@ -48,4 +48,7 @@ mat-icon {
 .example-header-image {
   background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
   background-size: cover;
+}
+mat-card-content {
+  padding: 2%;
 }

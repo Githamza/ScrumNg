@@ -25,8 +25,11 @@ import { AjoutProjetComponent } from "./ajout-projet/ajout-projet.component";
 import { ListeProjetsComponent } from "./liste-projets/liste-projets.component";
 import { ProjetscardsComponent } from "./projetscards/projetscards.component";
 import { ProjdetailsComponent } from "./projdetails/projdetails.component";
+import { AccueilComponent } from './accueil/accueil.component';
 
 const appRoutes: Routes = [
+  { path: "accueil", component: AccueilComponent, pathMatch: "full" },
+  
   { path: "ProjetsList", component: ListeProjetsComponent, pathMatch: "full" },
   { path: "nouveauproj", component: AjoutProjetComponent, pathMatch: "full" },
   { path: "projdetail/:id", component: ProjdetailsComponent, pathMatch: "full" }
@@ -39,7 +42,8 @@ const appRoutes: Routes = [
     AjoutProjetComponent,
     ListeProjetsComponent,
     ProjetscardsComponent,
-    ProjdetailsComponent
+    ProjdetailsComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,

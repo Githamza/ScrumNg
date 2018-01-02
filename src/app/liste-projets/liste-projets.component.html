@@ -7,6 +7,7 @@
 
   <mat-table #table [dataSource]="dataSource">
 
+
     <ng-container matColumnDef="Nom projet">
       <mat-header-cell *matHeaderCellDef> Nom projet </mat-header-cell>
       <mat-cell *matCellDef="let nouveauProjet"> {{nouveauProjet.nomProj }} </mat-cell>
@@ -25,10 +26,9 @@
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"> </mat-row>
   </mat-table>
 </div>
-
 
 
 

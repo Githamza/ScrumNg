@@ -1,0 +1,10 @@
+button {
+  float: right;
+  top: 44px;
+}
+p {
+  float: left;
+}
+.container {
+  width: 100%;
+}

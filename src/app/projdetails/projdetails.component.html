@@ -47,110 +47,113 @@
                 </mat-list>
             </mat-card-content>
         </mat-card>
-        <mat-card>
+        <mat-card class="backlog">
             <mat-card-header>
                 <mat-card-title>Le backlog</mat-card-title>
             </mat-card-header>
+            <mat-card-content>
+                <div Fxlayout="row" fxLayoutGap="20px">
+                    <mat-card fxFlex=25>
+                        <mat-card-header>
+                            <mat-card-title>To do </mat-card-title>
+                        </mat-card-header>
+                        <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
+                            <button mat-button [matMenuTriggerFor]="backlog" class="options" [hidden]=true>
+                                <mat-menu #backlog="matMenu">
+                                    <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
+                                    <button mat-menu-item>Modifier</button>
+                                    <button mat-menu-item>Supprimer</button>
+                                </mat-menu>
+
+                                <mat-menu #statut="matMenu">
+                                    <button mat-menu-item>En cours</button>
+                                    <button mat-menu-item>Testing</button>
+                                    <button mat-menu-item>En prod</button>
+                                </mat-menu>
+                                <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}}
+                                </mat-list-item>
+                                <mat-icon>more_vert</mat-icon>
+
+
+                            </button>
+                        </mat-list>
+
+                    </mat-card>
+
+                    <mat-card fxFlex=25>
+                        <mat-card-header>
+                            <mat-card-title>En cours </mat-card-title>
+                        </mat-card-header>
+                        <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
+                            <button mat-button [matMenuTriggerFor]="backlog">
+                                <mat-menu #backlog="matMenu">
+                                    <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
+                                    <button mat-menu-item>Modifier</button>
+                                    <button mat-menu-item>Supprimer</button>
+                                </mat-menu>
+
+                                <mat-menu #statut="matMenu">
+                                    <button mat-menu-item>To do</button>
+                                    <button mat-menu-item>Testing</button>
+                                    <button mat-menu-item>En prod</button>
+                                </mat-menu>
+                                <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </mat-list>
+
+                    </mat-card>
+                    <mat-card fxFlex=25>
+                        <mat-card-header>
+                            <mat-card-title>Testing </mat-card-title>
+                        </mat-card-header>
+                        <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
+                            <button mat-button [matMenuTriggerFor]="backlog">
+                                <mat-menu #backlog="matMenu" [matMenuTriggerFor]="backlog">
+                                    <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
+                                    <button mat-menu-item>Modifier</button>
+                                    <button mat-menu-item>Supprimer</button>
+                                </mat-menu>
+
+                                <mat-menu #statut="matMenu">
+                                    <button mat-menu-item>To do</button>
+                                    <button mat-menu-item>En cours</button>
+                                    <button mat-menu-item>En prod</button>
+                                </mat-menu>
+                                <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </mat-list>
+
+                    </mat-card>
+                    <mat-card fxFlex=25>
+                        <mat-card-header>
+                            <mat-card-title>En prod </mat-card-title>
+                        </mat-card-header>
+                        <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
+                            <button mat-button [matMenuTriggerFor]="backlog">
+
+                                <mat-menu #backlog="matMenu">
+                                    <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
+                                    <button mat-menu-item>Modifier</button>
+                                    <button mat-menu-item>Supprimer</button>
+                                </mat-menu>
+
+                                <mat-menu #statut="matMenu">
+                                    <button mat-menu-item>To do</button>
+                                    <button mat-menu-item>En cours</button>
+                                    <button mat-menu-item>Testing</button>
+                                </mat-menu>
+                                <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
+                                <mat-icon>more_vert</mat-icon>
+                            </button>
+                        </mat-list>
+
+                    </mat-card>
+                </div>
+            </mat-card-content>
         </mat-card>
-        <div Fxlayout="row" fxLayoutGap="20px">
-            <mat-card fxFlex=25>
-                <mat-card-header>
-                    <mat-card-title>To do </mat-card-title>
-                </mat-card-header>
-                <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
-                    <button mat-button [matMenuTriggerFor]="backlog" (mouseover)="getEvent($event)">
-                        <mat-menu #backlog="matMenu">
-                            <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
-                            <button mat-menu-item>Modifier</button>
-                            <button mat-menu-item>Supprimer</button>
-                        </mat-menu>
 
-                        <mat-menu #statut="matMenu">
-                            <button mat-menu-item>En cours</button>
-                            <button mat-menu-item>Testing</button>
-                            <button mat-menu-item>En prod</button>
-                        </mat-menu>
-                        <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}}
-                        </mat-list-item>
-                        <mat-icon>more_vert</mat-icon>
-
-
-                    </button>
-                </mat-list>
-
-            </mat-card>
-
-            <mat-card fxFlex=25>
-                <mat-card-header>
-                    <mat-card-title>En cours </mat-card-title>
-                </mat-card-header>
-                <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
-                    <button mat-button [matMenuTriggerFor]="backlog">
-                        <mat-menu #backlog="matMenu">
-                            <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
-                            <button mat-menu-item>Modifier</button>
-                            <button mat-menu-item>Supprimer</button>
-                        </mat-menu>
-
-                        <mat-menu #statut="matMenu">
-                            <button mat-menu-item>To do</button>
-                            <button mat-menu-item>Testing</button>
-                            <button mat-menu-item>En prod</button>
-                        </mat-menu>
-                        <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                </mat-list>
-
-            </mat-card>
-            <mat-card fxFlex=25>
-                <mat-card-header>
-                    <mat-card-title>Testing </mat-card-title>
-                </mat-card-header>
-                <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
-                    <button mat-button [matMenuTriggerFor]="backlog">
-                        <mat-menu #backlog="matMenu" [matMenuTriggerFor]="backlog">
-                            <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
-                            <button mat-menu-item>Modifier</button>
-                            <button mat-menu-item>Supprimer</button>
-                        </mat-menu>
-
-                        <mat-menu #statut="matMenu">
-                            <button mat-menu-item>To do</button>
-                            <button mat-menu-item>En cours</button>
-                            <button mat-menu-item>En prod</button>
-                        </mat-menu>
-                        <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                </mat-list>
-
-            </mat-card>
-            <mat-card fxFlex=25>
-                <mat-card-header>
-                    <mat-card-title>En prod </mat-card-title>
-                </mat-card-header>
-                <mat-list role="list" *ngFor="let userS of Projet?.backlog.userStory; let i=index">
-                    <button mat-button [matMenuTriggerFor]="backlog">
-
-                        <mat-menu #backlog="matMenu">
-                            <button mat-menu-item [matMenuTriggerFor]="statut">Déplacer</button>
-                            <button mat-menu-item>Modifier</button>
-                            <button mat-menu-item>Supprimer</button>
-                        </mat-menu>
-
-                        <mat-menu #statut="matMenu">
-                            <button mat-menu-item>To do</button>
-                            <button mat-menu-item>En cours</button>
-                            <button mat-menu-item>Testing</button>
-                        </mat-menu>
-                        <mat-list-item class="backlogList" role="listitem">User Story #{{i}} : {{userS.userStory}} </mat-list-item>
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                </mat-list>
-
-            </mat-card>
-        </div>
     </div>
 </div>
 {{this.Projet |json }}
